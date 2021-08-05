@@ -55,6 +55,11 @@ public class CArrayyList {
 		this.list = newList;
 	}
 
+	/**
+	 * 
+	 * @param index
+	 * @return
+	 */
 	private boolean isIndexAvailable(int index) {
 		return (index < this.list.length) ? true : false;
 	}
