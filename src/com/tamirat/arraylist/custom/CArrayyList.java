@@ -1,20 +1,20 @@
 package com.tamirat.arraylist.custom;
 
-public class CArrayyList {
+public class CArrayyList<T> {
 
 	// we would like to provide an initial value for array size
 	private int initialArrayLength = 10;
 	private final static int ARRAY_LENGTH_INCREMENTOR = 10;
-	private int[] list;
+	private Object[] list;
 	private int nextIndex; //this helps us to know the next index to add neww value
 	
 	public CArrayyList(int arrayLength) {
 		this.initialArrayLength = arrayLength;
-		this.list = new int[this.initialArrayLength];
+		this.list = new Object[this.initialArrayLength];
 		this.nextIndex = 0;
 	}
 	
-	public void add(int element) {
+	public void add(T element) {
 		// we would like to check if the next index is less than the array size
 		if(this.nextIndex >= this.initialArrayLength){
 			// we need to copy this array to a new one with a larger size first
@@ -24,9 +24,9 @@ public class CArrayyList {
 		this.nextIndex++;
 	}
 	
-	private int[] clone(int[] existingArray) {
+	private Object[] clone(Object[] existingArray) {
 		//int newSize = existingArray.length + 1;//CArrayyList.ARRAY_LENGTH_INCREMENTOR;
-		int[] newList = new int[existingArray.length + 1];
+		Object[] newList = new Object[existingArray.length + 1];
 		for(int i=0; i < existingArray.length; i++) {
 			newList[i] = existingArray[i];
 		}
@@ -42,7 +42,7 @@ public class CArrayyList {
 		if(!isIndexAvailable(index)) 
 			throw new IndexOutOfBoundsException();
 		
-		int[] newList = new int[this.list.length -1];
+		Object[] newList = new Object[this.list.length -1];
 		int newIndex = 0;
 		for(int i=0; i< this.list.length; i++) {
 			if(i == index) {
@@ -53,7 +53,7 @@ public class CArrayyList {
 		}
 		
 		this.list = newList;
-	}
+	} 
 
 	/**
 	 * 
@@ -66,7 +66,7 @@ public class CArrayyList {
 	
 	public String toString() {
 		String resultStmt = "";
-		for(int element : this.list) {
+		for(Object element : this.list) {
 			resultStmt += " "+ element;
 		}
 		return resultStmt;
